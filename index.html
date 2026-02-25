@@ -1,0 +1,1239 @@
+<!doctype html>
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Emile Vaughan Digital Memorial Tribute</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Cinzel:wght@400;500;600;700;800;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#b3e5fc",
+              secondary: "#ffd700",
+              "background-dark": "#020617",
+              "surface-dark": "#0f172a",
+              glass: "rgba(255, 255, 255, 0.05)",
+            },
+            fontFamily: {
+              display: ["Space Grotesk", "sans-serif"],
+              serif: ["Cinzel", "serif"],
+            },
+            backgroundImage: {
+              starfield:
+                "radial-gradient(circle at 50% 50%, #1e293b 0%, #020617 100%)",
+            },
+            animation: {
+              float: "float 6s ease-in-out infinite",
+              "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+              twinkle: "twinkle 3s ease-in-out infinite",
+            },
+            willChange: {
+              'transform-opacity': 'transform, opacity',
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-20px)" },
+              },
+              twinkle: {
+                "0%, 100%": { opacity: 0.2, transform: "scale(1)" },
+                "50%": { opacity: 0.8, transform: "scale(1.2)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #020617;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1e293b;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #334155;
+      }
+      .hero-text-shadow {
+        text-shadow:
+          0 0 40px rgba(179, 229, 252, 0.3),
+          0 0 80px rgba(179, 229, 252, 0.1);
+      }
+      .glass-panel {
+        background: rgba(15, 23, 42, 0.4);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        will-change: transform;
+      }
+      .glass-nav {
+        background: rgba(2, 6, 23, 0.6);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        will-change: transform;
+      }
+      .stars {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        background-image:
+          radial-gradient(1px 1px at 20px 30px, #ffffff, rgba(0, 0, 0, 0)),
+          radial-gradient(1px 1px at 40px 70px, #ffffff, rgba(0, 0, 0, 0)),
+          radial-gradient(1px 1px at 50px 160px, #ffffff, rgba(0, 0, 0, 0)),
+          radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0, 0, 0, 0)),
+          radial-gradient(2px 2px at 130px 80px, #ffffff, rgba(0, 0, 0, 0)),
+          radial-gradient(2px 2px at 160px 120px, #ffffff, rgba(0, 0, 0, 0));
+        background-repeat: repeat;
+        background-size: 200px 200px;
+        opacity: 0.2;
+        animation: stars-move 120s linear infinite;
+        will-change: transform;
+        transform: translateZ(0);
+      }
+      @keyframes stars-move {
+        from {
+          transform: translateY(0);
+        }
+        to {
+          transform: translateY(1000px);
+        }
+      }
+      .glow-dot {
+        position: absolute;
+        background: radial-gradient(
+          circle,
+          rgba(179, 229, 252, 0.8) 0%,
+          rgba(179, 229, 252, 0) 70%
+        );
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      .parallax-wrapper {
+        perspective: 1px;
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+      .parallax-group {
+        position: relative;
+        transform-style: preserve-3d;
+      }
+      
+      /* Fixed Header Styles */
+      header-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      header-nav.nav-hidden {
+        transform: translateY(-100%);
+      }
+      .nav-bg {
+        background: rgba(2, 6, 23, 0.4);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      /* Mobile Menu / Overlay Styles */
+      #mobile-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 150;
+        background: rgba(2, 6, 23, 0.95);
+        backdrop-filter: blur(12px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+      }
+      #mobile-nav.hidden-menu {
+        transform: scale(1.1);
+        opacity: 0;
+        pointer-events: none;
+      }
+      #mobile-nav.visible-menu {
+        transform: scale(1);
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .mobile-link {
+        font-family: 'Cinzel', serif;
+        font-size: 2.5rem;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+      .mobile-link:hover {
+        color: #b3e5fc;
+        transform: translateX(10px);
+      }
+    </style>
+    </style>
+  </head>
+  <body
+    class="bg-background-dark text-slate-100 font-display antialiased selection:bg-primary selection:text-background-dark overflow-x-hidden"
+  >
+    <div class="stars"></div>
+    <div
+      class="fixed top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] z-[1] pointer-events-none"
+    ></div>
+    <header-nav id="main-nav" class="py-6 px-6 sm:px-12 flex justify-between items-center">
+      <!-- Brand Logo -->
+      <div
+        class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center text-background-dark font-bold font-serif text-2xl shadow-[0_0_20px_rgba(179,229,252,0.4)] cursor-pointer hover:scale-110 transition-transform relative z-[160]"
+        onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+      >
+        E
+      </div>
+
+      <!-- Hamburger Button -->
+      <button 
+        id="menu-toggle" 
+        class="w-12 h-12 flex flex-col items-center justify-center gap-1.5 relative z-[160] group"
+      >
+        <span class="w-8 h-0.5 bg-primary transition-all duration-300 group-hover:w-10" id="bar1"></span>
+        <span class="w-8 h-0.5 bg-primary transition-all duration-300" id="bar2"></span>
+        <span class="w-8 h-0.5 bg-primary transition-all duration-300 group-hover:w-6" id="bar3"></span>
+      </button>
+
+      <!-- Global Navigation Overlay -->
+      <div id="mobile-nav" class="hidden-menu">
+        <div class="flex flex-col gap-8 text-center">
+          <a class="mobile-link" href="#">Service</a>
+          <a class="mobile-link" href="#">Life</a>
+          <a class="mobile-link" href="#">Gallery</a>
+          <a class="mobile-link" href="#">Memories</a>
+        </div>
+      </div>
+    </header-nav>
+    <header
+      class="relative w-full h-screen min-h-[800px] flex flex-col items-center justify-center overflow-hidden"
+    >
+      <div class="absolute inset-0 z-0 scale-110">
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-background-dark/60 via-background-dark/40 to-background-dark z-10"
+        ></div>
+        <div
+          class="w-full h-full bg-cover animate-pulse-slow"
+          loading="lazy"
+          decoding="async"
+          style="
+            background-image: url(&quot;hero_landscape.png&quot;);
+            background-position: center 25%;
+            filter: saturate(0.8) brightness(0.7);
+            will-change: opacity;
+          "
+        ></div>
+      </div>
+      <div
+        class="absolute top-1/4 left-1/4 w-2 h-2 bg-white rounded-full shadow-[0_0_20px_4px_rgba(255,255,255,0.8)] animate-twinkle"
+      ></div>
+      <div
+        class="absolute top-1/3 right-1/3 w-1 h-1 bg-primary rounded-full shadow-[0_0_15px_3px_rgba(179,229,252,0.8)] animate-twinkle"
+        style="animation-delay: 1s"
+      ></div>
+      <div
+        class="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-blue-300 rounded-full shadow-[0_0_18px_3px_rgba(147,197,253,0.8)] animate-twinkle"
+        style="animation-delay: 2s"
+      ></div>
+      <div
+        class="relative z-20 text-center px-4 max-w-5xl flex flex-col items-center gap-8 animate-float"
+        style="will-change: transform"
+      >
+        <div class="flex items-center gap-4 mb-2 opacity-80">
+          <div
+            class="h-[1px] w-12 bg-gradient-to-r from-transparent to-primary"
+          ></div>
+          <span
+            class="text-xs font-display font-light tracking-[0.4em] text-primary uppercase"
+            >Infinite Spirit</span
+          >
+          <div
+            class="h-[1px] w-12 bg-gradient-to-l from-transparent to-primary"
+          ></div>
+        </div>
+        <h1
+          class="font-serif text-6xl sm:text-7xl md:text-9xl lg:text-[10rem] font-medium tracking-tight text-white hero-text-shadow leading-none mix-blend-overlay opacity-90"
+        >
+          EMILE<br /><span
+            class="text-4xl sm:text-5xl md:text-8xl lg:text-[8rem] text-slate-300"
+            >VAUGHAN</span
+          >
+        </h1>
+        <div
+          class="flex items-center gap-6 sm:gap-8 text-xl sm:text-2xl md:text-4xl font-light text-primary/90 font-display"
+        >
+          <span class="font-thin">2003</span>
+          <span
+            class="w-2 h-2 rounded-full bg-white shadow-[0_0_10px_white]"
+          ></span>
+          <span class="font-thin">2026</span>
+        </div>
+        <p
+          class="max-w-xl text-slate-300 text-base sm:text-lg font-light leading-relaxed mt-4 tracking-wide backdrop-blur-sm p-4 rounded-xl border border-white/5"
+        >
+          A constellation of memories, laughter, and love that will never fade.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-6 sm:mt-10 w-full sm:w-auto px-4">
+          <button
+            class="bg-primary hover:bg-white text-background-dark px-8 sm:px-10 py-4 rounded-full font-bold tracking-wider uppercase text-xs transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(179,229,252,0.3)] flex items-center justify-center gap-2"
+          >
+            <span class="material-symbols-outlined text-[18px]"
+              >play_circle</span
+            >
+            Watch Tribute
+          </button>
+          <button
+            class="bg-transparent hover:bg-white/5 text-white border border-white/20 px-8 sm:px-10 py-4 rounded-full font-medium tracking-wider uppercase text-xs transition-all backdrop-blur-md"
+          >
+            RSVP to Service
+          </button>
+        </div>
+      </div>
+      <div
+        class="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 animate-bounce text-primary/50"
+      >
+        <span class="material-symbols-outlined text-4xl"
+          >keyboard_arrow_down</span
+        >
+      </div>
+    </header>
+    <main
+      class="relative w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-24 flex flex-col gap-32 sm:gap-40"
+    >
+      <div
+        class="fixed top-1/2 left-0 w-[800px] h-[800px] bg-blue-900/10 rounded-full blur-[120px] pointer-events-none -z-10 mix-blend-screen"
+      ></div>
+      <div
+        class="fixed bottom-0 right-0 w-[600px] h-[600px] bg-indigo-900/10 rounded-full blur-[100px] pointer-events-none -z-10 mix-blend-screen"
+      ></div>
+      <section
+        class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start"
+      >
+        <div class="lg:col-span-4 lg:sticky lg:top-40">
+          <h2
+            class="font-serif text-4xl sm:text-5xl md:text-6xl text-white mb-6 md:mb-8 leading-tight text-center lg:text-left"
+          >
+            Order of<br /><span class="text-primary italic">Service</span>
+          </h2>
+          <div
+            class="glass-panel p-6 sm:p-8 rounded-3xl relative overflow-hidden group max-w-lg mx-auto lg:max-w-none"
+          >
+            <div
+              class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/20 transition-all duration-700"
+            ></div>
+            <div class="relative z-10 space-y-8">
+              <div class="flex gap-5">
+                <div
+                  class="w-12 h-12 rounded-full border border-primary/30 flex items-center justify-center text-primary bg-primary/5"
+                >
+                  <span class="material-symbols-outlined">church</span>
+                </div>
+                <div>
+                  <h3 class="text-white font-serif text-xl mb-1">
+                    Betsaida Church Lambertsbay
+                  </h3>
+                  <p class="text-slate-400 text-sm font-light">
+                    Lamberts Bay, Western Cape, South Africa
+                  </p>
+                </div>
+              </div>
+              <div class="flex gap-5">
+                <div
+                  class="w-12 h-12 rounded-full border border-primary/30 flex items-center justify-center text-primary bg-primary/5"
+                >
+                  <span class="material-symbols-outlined">event</span>
+                </div>
+                <div>
+                  <h3 class="text-white font-serif text-xl mb-1">
+                    Friday, 27 February
+                  </h3>
+                  <p class="text-slate-400 text-sm font-light">
+                    10:00 AM — 12:30 PM
+                  </p>
+                </div>
+              </div>
+              <a
+                class="block w-full text-center py-4 rounded-xl border border-primary/20 text-primary hover:bg-primary hover:text-background-dark transition-all duration-300 text-xs font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(179,229,252,0.05)]"
+                href="#"
+              >
+                Get Directions
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-8 pt-4">
+          <div class="relative pl-8 sm:pl-12 border-l border-white/5 space-y-12 sm:space-y-20 ml-2 sm:ml-0">
+            <div class="relative group">
+              <div
+                class="absolute -left-[37px] sm:-left-[55px] top-1 w-3 h-3 rounded-full bg-primary shadow-[0_0_15px_3px_rgba(179,229,252,0.8)] z-10"
+              ></div>
+              <div
+                class="absolute -left-[37px] sm:-left-[55px] top-1 w-3 h-3 rounded-full bg-primary animate-ping opacity-75"
+              ></div>
+              <div class="grid grid-cols-1 sm:grid-cols-[100px_1fr] gap-2 sm:gap-4 mb-2">
+                <span class="text-primary font-display font-light text-lg sm:text-xl"
+                  >10:00</span
+                >
+                <div>
+                  <h3
+                    class="text-2xl sm:text-3xl text-white font-serif mb-1 sm:mb-2 group-hover:text-primary transition-colors"
+                  >
+                    Welcome
+                  </h3>
+                  <p class="text-slate-400 font-light text-sm sm:text-base">
+                    Led by
+                    <span
+                      class="text-slate-200 border-b border-primary/30 pb-0.5"
+                      >Pastor David Thompson</span
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="relative group">
+              <div
+                class="absolute -left-[37px] sm:-left-[55px] top-1 w-3 h-3 rounded-full bg-slate-700 border border-slate-500 group-hover:bg-primary group-hover:border-primary transition-all duration-300 z-10 shadow-[0_0_10px_rgba(0,0,0,0.5)]"
+              ></div>
+              <div class="grid grid-cols-1 sm:grid-cols-[100px_1fr] gap-2 sm:gap-4 mb-2">
+                <span
+                  class="text-slate-500 group-hover:text-primary font-display font-light text-lg sm:text-xl transition-colors"
+                  >10:15</span
+                >
+                <div>
+                  <h3
+                    class="text-2xl sm:text-3xl text-white font-serif mb-1 sm:mb-2 group-hover:text-primary transition-colors"
+                  >
+                    Musical Selection
+                  </h3>
+                  <div
+                    class="glass-panel inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10"
+                  >
+                    <span class="material-symbols-outlined text-primary text-sm"
+                      >music_note</span
+                    >
+                    <span class="text-xs sm:text-sm text-slate-300 italic"
+                      >"A Change Is Gonna Come"</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="relative group">
+              <div
+                class="absolute -left-[37px] sm:-left-[55px] top-1 w-3 h-3 rounded-full bg-slate-700 border border-slate-500 group-hover:bg-primary group-hover:border-primary transition-all duration-300 z-10 shadow-[0_0_10px_rgba(0,0,0,0.5)]"
+              ></div>
+              <div class="grid grid-cols-1 sm:grid-cols-[100px_1fr] gap-2 sm:gap-4 mb-2">
+                <span
+                  class="text-slate-500 group-hover:text-primary font-display font-light text-lg sm:text-xl transition-colors"
+                  >10:30</span
+                >
+                <div>
+                  <h3
+                    class="text-2xl sm:text-3xl text-white font-serif mb-1 sm:mb-2 group-hover:text-primary transition-colors"
+                  >
+                    Eulogy
+                  </h3>
+                  <p class="text-slate-400 font-light text-sm sm:text-base">
+                    Read by
+                    <span
+                      class="text-slate-200 border-b border-primary/30 pb-0.5"
+                      >JJ (Brother)</span
+                    >
+                  </p>
+                  <p class="text-slate-500 text-xs sm:text-sm mt-2 font-light">
+                    Reflections on growing up with Emile and his impact on our
+                    family.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="relative group">
+              <div
+                class="absolute -left-[37px] sm:-left-[55px] top-1 w-3 h-3 rounded-full bg-slate-700 border border-slate-500 group-hover:bg-primary group-hover:border-primary transition-all duration-300 z-10 shadow-[0_0_10px_rgba(0,0,0,0.5)]"
+              ></div>
+              <div class="grid grid-cols-1 sm:grid-cols-[100px_1fr] gap-2 sm:gap-4 mb-2">
+                <span
+                  class="text-slate-500 group-hover:text-primary font-display font-light text-lg sm:text-xl transition-colors"
+                  >11:00</span
+                >
+                <div>
+                  <h3
+                    class="text-2xl sm:text-3xl text-white font-serif mb-1 sm:mb-2 group-hover:text-primary transition-colors"
+                  >
+                    Open Mic Tributes
+                  </h3>
+                  <p class="text-slate-400 font-light text-sm sm:text-base">
+                    Friends &amp; Family are invited to share memories.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="relative group">
+              <div
+                class="absolute -left-[37px] sm:-left-[55px] top-1 w-3 h-3 rounded-full bg-slate-700 border-2 border-primary/50 group-hover:bg-primary group-hover:border-primary transition-all duration-300 z-10 shadow-[0_0_15px_rgba(179,229,252,0.4)]"
+              ></div>
+              <div class="grid grid-cols-1 sm:grid-cols-[100px_1fr] gap-2 sm:gap-4 mb-2">
+                <span
+                  class="text-primary font-display font-medium text-lg sm:text-xl transition-colors"
+                  >Feb 26</span
+                >
+                <div>
+                  <h3
+                    class="text-2xl sm:text-3xl text-white font-serif mb-1 sm:mb-2 group-hover:text-primary transition-colors"
+                  >
+                    Memorial Service
+                  </h3>
+                  <div class="flex items-center gap-3 text-slate-400 mb-2">
+                    <span class="material-symbols-outlined text-primary text-sm">schedule</span>
+                    <span class="text-sm">19:00</span>
+                  </div>
+                  <p class="text-slate-500 text-xs sm:text-sm font-light">
+                    A candlelight evening of remembrance and shared stories at Betsaida Church.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="relative group">
+              <div
+                class="absolute -left-[37px] sm:-left-[55px] top-1 w-3 h-3 rounded-full bg-slate-700 border border-slate-500 group-hover:bg-primary group-hover:border-primary transition-all duration-300 z-10 shadow-[0_0_10px_rgba(0,0,0,0.5)]"
+              ></div>
+              <div class="grid grid-cols-1 sm:grid-cols-[100px_1fr] gap-2 sm:gap-4 mb-2">
+                <span
+                  class="text-slate-500 group-hover:text-primary font-display font-light text-lg sm:text-xl transition-colors"
+                  >11:45</span
+                >
+                <div>
+                  <h3
+                    class="text-2xl sm:text-3xl text-white font-serif mb-1 sm:mb-2 group-hover:text-primary transition-colors"
+                  >
+                    Procession
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="relative z-10">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-center"
+        >
+          <div class="order-2 md:order-1 relative group perspective-1000">
+            <div
+              class="absolute -inset-4 bg-gradient-to-tr from-primary/30 to-blue-600/30 rounded-[2rem] blur-xl opacity-50 group-hover:opacity-100 transition duration-1000"
+            ></div>
+            <div
+              class="relative aspect-[4/5] w-full rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 transform transition-transform duration-700 hover:rotate-y-6 hover:rotate-x-6"
+            >
+              <div
+                class="w-full h-full bg-cover bg-center"
+                style="
+                  background-image: url(&quot;hero_landscape.png&quot;);
+                  filter: contrast(1.1);
+                "
+                loading="lazy"
+                decoding="async"
+              ></div>
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background-dark/80 via-transparent to-transparent opacity-60"
+              ></div>
+            </div>
+            <div
+              class="absolute -bottom-8 -right-8 w-40 h-40 glass-panel rounded-full flex items-center justify-center hidden lg:flex animate-float"
+              style="animation-delay: 1.5s"
+            >
+              <span class="font-serif text-6xl text-primary opacity-80 italic"
+                >"</span
+              >
+            </div>
+          </div>
+          <div class="order-1 md:order-2 space-y-6 sm:space-y-10">
+            <h2 class="font-serif text-4xl sm:text-5xl md:text-7xl text-white text-center md:text-left">
+              Who Was <br /><span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-200"
+                >Emile?</span
+              >
+            </h2>
+            <div
+              class="space-y-4 sm:space-y-6 text-slate-300 text-base sm:text-lg md:text-xl font-light leading-relaxed"
+            >
+              <p
+                class="first-letter:text-4xl sm:first-letter:text-5xl first-letter:font-serif first-letter:text-primary first-letter:mr-3 first-letter:float-left"
+              >
+                Emile wasn't just a presence in the room; he was the energy that
+                lit it up. Born in 2003, he approached the world with a
+                curiosity that was infectious. Whether he was tinkering with
+                vintage cameras or debating the best hip-hop albums of the 90s,
+                he did it with passion.
+              </p>
+              <p>
+                He was a dreamer who acted. At 19, he started a community garden
+                initiative that now feeds over fifty families. He believed in
+                the power of small acts of kindness, often saying,
+                <span class="text-primary italic border-b border-primary/20"
+                  >"It costs nothing to be real."</span
+                >
+              </p>
+            </div>
+            <div class="grid grid-cols-2 gap-8 pt-8 border-t border-white/5">
+              <div class="text-center md:text-left">
+                <span
+                  class="block text-6xl font-display font-thin text-white mb-2"
+                  >21</span
+                >
+                <span
+                  class="text-xs text-primary font-bold uppercase tracking-[0.2em]"
+                  >Years Young</span
+                >
+              </div>
+              <div class="text-center md:text-left">
+                <span
+                  class="block text-6xl font-display font-thin text-white mb-2"
+                  >∞</span
+                >
+                <span
+                  class="text-xs text-primary font-bold uppercase tracking-[0.2em]"
+                  >Lives Touched</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="relative z-10">
+        <div
+          class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6"
+        >
+          <div>
+            <span
+              class="text-primary text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em] mb-2 block"
+              >Visual Memories</span
+            >
+            <h2 class="font-serif text-3xl sm:text-4xl md:text-6xl text-white">
+              Life in Pictures
+            </h2>
+          </div>
+          <a
+            class="group flex items-center gap-3 text-white transition-colors border-b border-white/20 pb-1 hover:border-primary"
+            href="#"
+          >
+            <span
+              class="text-xs sm:text-sm uppercase tracking-widest group-hover:text-primary transition-colors"
+              >View Full Gallery</span
+            >
+            <span
+              class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform"
+              >arrow_forward</span
+            >
+          </a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 sm:auto-rows-[250px]">
+          <div
+            class="sm:col-span-2 sm:row-span-2 rounded-3xl overflow-hidden relative group border border-white/10 shadow-2xl h-[250px] sm:h-auto"
+          >
+            <div
+              class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+              style="
+                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBm2T6fxQ8QHugQkbQq8_whIfE5c7G4G9RfKQWlly7-pWkN0ikhxowcNJ464Cg7Bf9kESTsLGq2cV7q38o1PjfCFmNUT_A40cSE3yXgf1qk0U52-MFLmi2Kkt2mmeo4kaYMUpjXGhXvXAkrw7XG8NfR-dFOXmwuiARC2siOlF3xFkm9Ty7iHuL1bTZVeCdcTFL7fpqVsRPJnvmZn6e6bQmWt_3EoDln8aHvxY-NFPAUjNA9Ga1j3otJKzQ8voxZJrfyaMigOxoOZGCd&quot;);
+              "
+              loading="lazy"
+              decoding="async"
+            ></div>
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-background-dark/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6 sm:p-8"
+            >
+              <div>
+                <p class="text-primary text-[10px] sm:text-xs uppercase tracking-widest mb-1 sm:mb-2">
+                  Adventures
+                </p>
+                <p class="text-white font-serif text-xl sm:text-2xl">
+                  Summer Hiking Trip, 2023
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rounded-3xl overflow-hidden relative group border border-white/10 hover:border-primary/50 transition-colors h-[250px]"
+          >
+            <div
+              class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+              style="
+                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCLsAG7YYmgRFNgTTRsx_-2bD_P8HiSFU76io055nYLXqjJ8jmzbjTEpQNgz4kQPLtobY_JtgfyCMgYSlX0nAXW8TTBUf4xS6HoZwDQDyB1x2GG1hG4o0bLUhulJHBUJpKwV0b091GNgtSirkCnxd-dhW-haX_eVJWrsnAYjpE_wCEsMejH0GqeSH3OuzecUvQ6nfZQYKu-AuN9-hnABqH3eyas0JuTlF12j13vFvtDAPH1iF1Hv4Bnsgef6_FT7IrU_aq7bimPiMJy&quot;);
+              "
+              loading="lazy"
+              decoding="async"
+            ></div>
+          </div>
+          <div
+            class="rounded-3xl overflow-hidden relative group border border-white/10 hover:border-primary/50 transition-colors h-[250px]"
+          >
+            <div
+              class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+              style="
+                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuD7rbRh9azmaEf_1-Rb9NBy_qtzs7sYLgqZL8MneZyK47PVvEu90Ewza2Aeu-uXGk8-T9DFcJaFfqjvTfIhwWzAsf5uGnPS7ldFyoGRMB0Wua9Kq_GPTgSpP9Ld7ZDRQOAHG0CFFbkuwUeL50mwpyyFTrSND2vb4YEIfU3naSJSN7s-ULn-1Xl3oDfMPReIbGrAN88bUmoeNSBoJP12QHGevTZgszIzpS6ESGIQR55sexy1KyBaiyNfgyqEMoZzf96tzI7aWtPppZ7i&quot;);
+              "
+              loading="lazy"
+              decoding="async"
+            ></div>
+          </div>
+          <div
+            class="sm:col-span-2 sm:row-span-1 rounded-3xl overflow-hidden relative group border border-white/10 hover:border-primary/50 transition-colors h-[250px] sm:h-auto"
+          >
+            <div
+              class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+              style="
+                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDryB4JNp89O6aPbCZXmu-fMrKrnADiRGvzQ_8AAWt5O9MmpeVussQOvvf_eWOkZQKluupiZw03p4BChRLkMayoqopKdiakeDZ0o7QMFiyRMZM8Q8e4KU5KnNjKUWHPVqILrGSQG0bgFCStnlablTxLiC5psQTO6LYVIycGbxvuU3ixQ0hof3Z7OBskNbhQlPSzkDMqiOTYQgKz1eCdczrG8ksvb9Igwlat82y_ubNUptuEiDYqRv-6Wv-on8p4UP31J6CKN2nEl3Iv&quot;);
+              "
+              loading="lazy"
+              decoding="async"
+            ></div>
+            <div
+              class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"
+            ></div>
+          </div>
+          <div
+            class="rounded-3xl overflow-hidden relative group border border-white/10 hover:border-primary/50 transition-colors h-[250px]"
+          >
+            <div
+              class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+              style="
+                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuC6BBk657TC3OkmDLEqg14YzDq59pCFQP3ZTjQ3HnsbH5c4ez7olXe9JeiaFysy54o_a9XXen2o8np2YL1Yp-3Wl-6mzHG0Vg_1ZWbr7k-LIFHBHH4pMTlXuUL6YOm6ZC7CODRw3U8IyjReDV_ITt4z3lhBdRb3lEEyZaESYrXSiOxHOSxUpZ2P44AylxFoo6S-qFUvxsUU91b7XNeb5p4r6i8LL81nBSSiquQE1u3c4Dq6HO-EAg32TApBSwsRVEF823iVYdque7fh&quot;);
+              "
+              loading="lazy"
+              decoding="async"
+            ></div>
+          </div>
+          <div
+            class="rounded-3xl overflow-hidden relative group glass-panel flex flex-col items-center justify-center border border-white/10 cursor-pointer hover:bg-white/5 transition-all h-[120px] sm:h-auto"
+          >
+            <div
+              class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-primary/10 flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform"
+            >
+              <span class="material-symbols-outlined text-2xl sm:text-3xl text-primary"
+                >add_a_photo</span
+              >
+            </div>
+            <p
+              class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-slate-300"
+            >
+              Share Photo
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="relative z-10 py-12">
+        <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16 px-4">
+          <span
+            class="material-symbols-outlined text-primary text-4xl sm:text-5xl mb-4 animate-float"
+            >headphones</span
+          >
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-white mb-4">
+            The Soundtrack
+          </h2>
+          <p class="text-slate-400 font-light text-base sm:text-lg">
+            Tracks that defined his journey, curated with love.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div
+            class="glass-panel p-6 rounded-3xl flex items-center gap-6 group hover:bg-white/10 transition-all duration-300 relative overflow-hidden"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            ></div>
+            <div
+              class="relative w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0 shadow-lg group-hover:shadow-primary/20 transition-all"
+            >
+              <img
+                alt="Album Art"
+                class="w-full h-full object-cover animate-[spin_10s_linear_infinite] group-hover:animate-none"
+                loading="lazy"
+                decoding="async"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ-uka4qffbIsuqmbotG4LnWJXHz9_6wrmrIy6MzLrxSjna9HiYIGmOQsu6_TKH5YqS3fdfXhxMN_DdN9Ony2xXNtvx0QeiPuzEPaEBhFoJYL__SDhvwFVzpRE4Qyi_eweh0Et9USfv2GmFS0pGwgrJ7OiFJ8KA-gkSG6BFvmrYyYY1heBFCcYumerF60SKTrpdzrMhaXGP6pf4EvSLcoM1OHbwGNGehAKgPddkAWvvJQ0Li9RIBsgxo13IV4kLSD0kVVyK1tA9fGD"
+              />
+              <div
+                class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]"
+              >
+                <span class="material-symbols-outlined text-white text-3xl"
+                  >play_circle</span
+                >
+              </div>
+            </div>
+            <div class="flex-grow min-w-0 relative z-10">
+              <h4 class="text-white font-bold text-lg truncate mb-1">
+                Pursuit of Happiness
+              </h4>
+              <p
+                class="text-primary text-sm font-medium tracking-wide uppercase"
+              >
+                Kid Cudi
+              </p>
+              <div
+                class="mt-3 w-full bg-white/10 h-1 rounded-full overflow-hidden"
+              >
+                <div class="bg-primary h-full w-2/3 rounded-full relative">
+                  <div
+                    class="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow-[0_0_8px_white]"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="glass-panel p-6 rounded-3xl flex items-center gap-6 group hover:bg-white/10 transition-all duration-300 relative overflow-hidden"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            ></div>
+            <div
+              class="relative w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0 shadow-lg group-hover:shadow-primary/20 transition-all"
+            >
+              <img
+                alt="Album Art"
+                class="w-full h-full object-cover animate-[spin_12s_linear_infinite] group-hover:animate-none"
+                loading="lazy"
+                decoding="async"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7eSlYXeKdgaE4otGo4iwSCE86I21Uo64R6-__8HCerc30acc9Q4rUOd09AhEEB072ZDl7t2pCewA41FXrlRctzPVysrPzhZCmMtxUK5A0C5bVuYuBhFJfDR6ZDV3S4SK5u68wmMsIRpQVmwbLl-dmSeS0g8wh7BR0vrsqKLsJFAqJdjJ7USSAkELd0ioRNjp3Ra7BKEzmOMPke6R7OEg0ptZK9aqqfI3iShEglglW7E7N5_FTpW1rUtlVk6fAAdbPTzLSinEwHt31"
+              />
+              <div
+                class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]"
+              >
+                <span class="material-symbols-outlined text-white text-3xl"
+                  >play_circle</span
+                >
+              </div>
+            </div>
+            <div class="flex-grow min-w-0 relative z-10">
+              <h4 class="text-white font-bold text-lg truncate mb-1">Nikes</h4>
+              <p
+                class="text-primary text-sm font-medium tracking-wide uppercase"
+              >
+                Frank Ocean
+              </p>
+              <div
+                class="mt-3 w-full bg-white/10 h-1 rounded-full overflow-hidden"
+              >
+                <div
+                  class="bg-slate-500 h-full w-0 group-hover:w-1/3 transition-all duration-1000 rounded-full"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="glass-panel p-6 rounded-3xl flex items-center gap-6 group hover:bg-white/10 transition-all duration-300 relative overflow-hidden"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            ></div>
+            <div
+              class="relative w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0 shadow-lg group-hover:shadow-primary/20 transition-all"
+            >
+              <img
+                alt="Album Art"
+                class="w-full h-full object-cover animate-[spin_15s_linear_infinite] group-hover:animate-none"
+                loading="lazy"
+                decoding="async"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcHd99X090tq85ibSybtTKL5cNyKRa1o-p-vB-ioBET3DCi7hj2Fd9Jso-2QP1CQ9Dd2BBnNxio5BuzI2cmSPL1yyxV7UnsdOHHlT1go9kerEqa4xwBD5eKcJhnOgEhMCFkbUAJRfgUkJkyKXbkB9naBDxJjz1U1d8LadIPtBYq0NdAbG2T7GbdsM0cblJ6hF4hURsgJxs5eR_EbU_DOVmciYx_thq5ylW218h69O1cIYhx_DAWNK5Zp1n3blmeCP8tfggj5DeTOYn"
+              />
+              <div
+                class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]"
+              >
+                <span class="material-symbols-outlined text-white text-3xl"
+                  >play_circle</span
+                >
+              </div>
+            </div>
+            <div class="flex-grow min-w-0 relative z-10">
+              <h4 class="text-white font-bold text-lg truncate mb-1">
+                Ultralight Beam
+              </h4>
+              <p
+                class="text-primary text-sm font-medium tracking-wide uppercase"
+              >
+                Kanye West
+              </p>
+              <div
+                class="mt-3 w-full bg-white/10 h-1 rounded-full overflow-hidden"
+              >
+                <div
+                  class="bg-slate-500 h-full w-0 group-hover:w-1/4 transition-all duration-1000 rounded-full"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="glass-panel rounded-2xl p-2 overflow-hidden">
+          <iframe
+            allow="
+              autoplay;
+              clipboard-write;
+              encrypted-media;
+              fullscreen;
+              picture-in-picture;
+            "
+            allowfullscreen=""
+            frameborder="0"
+            height="80"
+            loading="lazy"
+            src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&amp;theme=0"
+            style="border-radius: 12px"
+            width="100%"
+          ></iframe>
+        </div>
+      </section>
+      <section class="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-1 space-y-8 lg:sticky lg:top-32 h-fit mb-12 lg:mb-0">
+          <div>
+            <h2 class="font-serif text-4xl md:text-5xl text-white mb-4">
+              Wall of Light
+            </h2>
+            <p class="text-slate-400 mb-6 font-light">
+              Each message lights a star in his galaxy. Share your story or
+              simply light a candle.
+            </p>
+          </div>
+          <div class="glass-panel p-8 rounded-3xl relative overflow-hidden">
+            <div
+              class="absolute -top-10 -right-10 w-32 h-32 bg-primary/20 rounded-full blur-3xl"
+            ></div>
+            <form class="space-y-6 relative z-10">
+              <div class="space-y-2">
+                <label
+                  class="block text-xs font-bold uppercase tracking-widest text-slate-400"
+                  >Your Name</label
+                >
+                <input
+                  class="w-full bg-background-dark/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:ring-1 focus:ring-primary focus:border-primary placeholder-slate-600 transition-all outline-none"
+                  placeholder="Jane Doe"
+                  type="text"
+                />
+              </div>
+              <div class="space-y-2">
+                <label
+                  class="block text-xs font-bold uppercase tracking-widest text-slate-400"
+                  >Your Memory</label
+                >
+                <textarea
+                  class="w-full bg-background-dark/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:ring-1 focus:ring-primary focus:border-primary placeholder-slate-600 transition-all outline-none resize-none"
+                  placeholder="I'll never forget..."
+                  rows="4"
+                ></textarea>
+              </div>
+              <div class="flex flex-col gap-3 pt-2">
+                <button
+                  class="w-full bg-primary hover:bg-white hover:scale-[1.02] text-background-dark py-3 rounded-xl font-bold uppercase text-xs tracking-widest transition-all shadow-lg shadow-primary/20"
+                  type="submit"
+                >
+                  Post Memory
+                </button>
+                <button
+                  class="w-full border border-white/10 hover:bg-white/5 text-slate-300 py-3 rounded-xl font-bold uppercase text-xs tracking-widest transition-all flex items-center justify-center gap-2 group"
+                  type="button"
+                >
+                  <span
+                    class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform"
+                    >candle</span
+                  >
+                  Light a Candle Only
+                </button>
+              </div>
+            </form>
+          </div>
+          <div
+            class="p-6 rounded-2xl bg-gradient-to-r from-blue-900/40 to-transparent border border-white/5 flex items-center gap-5"
+          >
+            <div
+              class="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center text-primary shadow-[0_0_20px_rgba(179,229,252,0.3)] animate-pulse-slow"
+            >
+              <span class="material-symbols-outlined text-2xl"
+                >local_fire_department</span
+              >
+            </div>
+            <div>
+              <span class="block text-3xl font-bold text-white font-display"
+                >842</span
+              >
+              <span
+                class="text-xs text-slate-400 font-bold uppercase tracking-widest"
+                >Candles Burning</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-2">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-auto">
+            <div
+              class="glass-panel p-8 rounded-3xl hover:bg-white/5 hover:-translate-y-1 transition-all duration-300 group"
+            >
+              <div
+                class="flex items-center justify-between mb-6 border-b border-white/5 pb-4"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center text-white font-serif border border-white/10"
+                  >
+                    S
+                  </div>
+                  <div>
+                    <h4 class="text-white font-bold text-sm">Sarah Jenkins</h4>
+                    <span
+                      class="text-[10px] text-slate-500 uppercase tracking-widest"
+                      >2 hours ago</span
+                    >
+                  </div>
+                </div>
+                <span
+                  class="material-symbols-outlined text-slate-600 group-hover:text-primary transition-colors"
+                  >candle</span
+                >
+              </div>
+              <p class="text-slate-300 text-sm leading-7 font-light">
+                "Emile was the first person to welcome me when I moved to the
+                city. He had this way of making everyone feel like they
+                belonged. The way he lit up talking about his garden was pure
+                magic."
+              </p>
+            </div>
+            <div
+              class="glass-panel p-8 rounded-3xl hover:bg-white/5 hover:-translate-y-1 transition-all duration-300 group border-primary/20 shadow-[0_0_20px_rgba(179,229,252,0.05)]"
+            >
+              <div
+                class="flex items-center justify-between mb-6 border-b border-white/5 pb-4"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-blue-400 text-background-dark flex items-center justify-center font-serif font-bold"
+                  >
+                    M
+                  </div>
+                  <div>
+                    <h4 class="text-white font-bold text-sm">Mike Ross</h4>
+                    <span
+                      class="text-[10px] text-slate-500 uppercase tracking-widest"
+                      >Yesterday</span
+                    >
+                  </div>
+                </div>
+                <span
+                  class="material-symbols-outlined text-primary shadow-[0_0_10px_rgba(179,229,252,0.8)] rounded-full"
+                  >candle</span
+                >
+              </div>
+              <p class="text-slate-300 text-sm leading-7 font-light">
+                "Rest easy, brother. That trip to Vancouver will always be one
+                of my favorite memories. You lived more in 21 years than most do
+                in a lifetime. Keep shining up there."
+              </p>
+            </div>
+            <div
+              class="glass-panel p-8 rounded-3xl hover:bg-white/5 hover:-translate-y-1 transition-all duration-300 group md:col-span-2 lg:col-span-1"
+            >
+              <div
+                class="flex items-center justify-between mb-6 border-b border-white/5 pb-4"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center text-white font-serif border border-white/10"
+                  >
+                    A
+                  </div>
+                  <div>
+                    <h4 class="text-white font-bold text-sm">Auntie Lisa</h4>
+                    <span
+                      class="text-[10px] text-slate-500 uppercase tracking-widest"
+                      >2 days ago</span
+                    >
+                  </div>
+                </div>
+                <span
+                  class="material-symbols-outlined text-slate-600 group-hover:text-primary transition-colors"
+                  >candle</span
+                >
+              </div>
+              <p class="text-slate-300 text-sm leading-7 font-light">
+                "My sweet nephew. Your smile could light up the darkest room. We
+                love you forever."
+              </p>
+            </div>
+            <div
+              class="glass-panel p-8 rounded-3xl hover:bg-white/5 hover:-translate-y-1 transition-all duration-300 group md:col-span-2"
+            >
+              <div
+                class="flex items-center justify-between mb-6 border-b border-white/5 pb-4"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center text-white font-serif border border-white/10"
+                  >
+                    D
+                  </div>
+                  <div>
+                    <h4 class="text-white font-bold text-sm">David Chen</h4>
+                    <span
+                      class="text-[10px] text-slate-500 uppercase tracking-widest"
+                      >3 days ago</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <p class="text-slate-300 text-sm leading-7 font-light">
+                "Thank you for teaching me how to skate. You were patient when
+                you didn't have to be. A true legend. I'm going to finish that
+                deck we started painting."
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer
+      class="relative z-10 border-t border-white/5 pt-24 pb-12 bg-background-dark"
+    >
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+        <div
+          class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-primary rotate-45 shadow-[0_0_20px_5px_rgba(179,229,252,0.4)]"
+        ></div>
+        </div>
+        <div
+          class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-12"
+        ></div>
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-8"
+        >
+          <div class="text-slate-500 text-xs font-light tracking-wide">
+            © 2026 The Vaughan Family.
+          </div>
+          <div class="flex gap-8">
+            <a
+              class="text-slate-500 hover:text-white transition-colors text-xs uppercase tracking-widest"
+              href="#"
+              >Contact</a
+            >
+            <a
+              class="text-slate-500 hover:text-white transition-colors text-xs uppercase tracking-widest"
+              href="#"
+              >Privacy</a
+            >
+            <a
+              class="text-slate-500 hover:text-white transition-colors text-xs uppercase tracking-widest"
+              href="#"
+              >Report</a
+            >
+          </div>
+        </div>
+        <div class="mt-20 opacity-10">
+          <span
+            class="font-serif text-[10rem] leading-none text-white select-none"
+            >EV</span
+          >
+        </div>
+      </div>
+    </footer>
+    <script>
+      // Navigation behavior
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileNav = document.getElementById("mobile-nav");
+      const mainNav = document.getElementById("main-nav");
+      const bars = [document.getElementById("bar1"), document.getElementById("bar2"), document.getElementById("bar3")];
+      
+      let lastScrollY = window.scrollY;
+      let isMenuOpen = false;
+
+      // Toggle Menu
+      menuToggle.addEventListener("click", () => {
+        isMenuOpen = !isMenuOpen;
+        if (isMenuOpen) {
+          mobileNav.classList.remove("hidden-menu");
+          mobileNav.classList.add("visible-menu");
+          document.body.style.overflow = "hidden";
+          // Animate bars to X
+          bars[0].style.transform = "translateY(7px) rotate(45deg)";
+          bars[1].style.opacity = "0";
+          bars[2].style.transform = "translateY(-7px) rotate(-45deg)";
+        } else {
+          closeMenu();
+        }
+      });
+
+      function closeMenu() {
+        isMenuOpen = false;
+        mobileNav.classList.remove("visible-menu");
+        mobileNav.classList.add("hidden-menu");
+        document.body.style.overflow = "";
+        // Reset bars
+        bars[0].style.transform = "";
+        bars[1].style.opacity = "1";
+        bars[2].style.transform = "";
+      }
+
+      // Close menu when clicking links
+      const mobileLinks = mobileNav.querySelectorAll("a");
+      mobileLinks.forEach(link => {
+        link.addEventListener("click", closeMenu);
+      });
+
+      // Scroll behavior for desktop (and general)
+      window.addEventListener("scroll", () => {
+        if (isMenuOpen) return;
+        
+        const currentScrollY = window.scrollY;
+        
+        // Add background when scrolled
+        if (currentScrollY > 50) {
+          mainNav.classList.add("nav-bg");
+        } else {
+          mainNav.classList.remove("nav-bg");
+        }
+
+        // Hide/Show based on direction
+        if (currentScrollY > lastScrollY && currentScrollY > 200) {
+          // Scrolling down
+          mainNav.classList.add("nav-hidden");
+        } else {
+          // Scrolling up
+          mainNav.classList.remove("nav-hidden");
+        }
+        
+        lastScrollY = currentScrollY;
+      });
+
+      // Close menu on ESC
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && isMenuOpen) closeMenu();
+      });
+    </script>
+  </body>
+</html>
