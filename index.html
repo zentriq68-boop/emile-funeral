@@ -1,9 +1,9 @@
 <!doctype html>
-<html class="dark" lang="en">
+<html class="dark" lang="af">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Emile Vaughan Digital Memorial Tribute</title>
+    <title>Emile Vaughan Digitale Gedenkblyk</title>
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link
@@ -199,6 +199,30 @@
         color: #b3e5fc;
         transform: translateX(10px);
       }
+
+      /* Lightbox Styles */
+      #lightbox-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        background: rgba(2, 6, 23, 0.95);
+        backdrop-filter: blur(12px);
+        align-items: center;
+        justify-content: center;
+        cursor: zoom-out;
+      }
+      #lightbox-image {
+        max-width: 90%;
+        max-height: 90vh;
+        object-fit: contain;
+        border-radius: 1rem;
+        box-shadow: 0 0 50px rgba(179, 229, 252, 0.2);
+        cursor: default;
+      }
+      .clickable-image {
+        cursor: pointer;
+      }
     </style>
     </style>
   </head>
@@ -231,10 +255,11 @@
       <!-- Global Navigation Overlay -->
       <div id="mobile-nav" class="hidden-menu">
         <div class="flex flex-col gap-8 text-center">
-          <a class="mobile-link" href="#">Service</a>
-          <a class="mobile-link" href="#">Life</a>
-          <a class="mobile-link" href="#">Gallery</a>
-          <a class="mobile-link" href="#">Memories</a>
+          <a class="mobile-link" href="#">Diens</a>
+          <a class="mobile-link" href="#">Lewe</a>
+          <a class="mobile-link" href="#gallery">Galery</a>
+          <a class="mobile-link" href="#tribute">Huldiging</a>
+
         </div>
       </div>
     </header-nav>
@@ -278,7 +303,7 @@
           ></div>
           <span
             class="text-xs font-display font-light tracking-[0.4em] text-primary uppercase"
-            >Infinite Spirit</span
+            >Ewige Gees</span
           >
           <div
             class="h-[1px] w-12 bg-gradient-to-l from-transparent to-primary"
@@ -295,16 +320,16 @@
         <div
           class="flex items-center gap-6 sm:gap-8 text-xl sm:text-2xl md:text-4xl font-light text-primary/90 font-display"
         >
-          <span class="font-thin">2003</span>
+          <span class="font-thin text-base sm:text-xl md:text-2xl uppercase tracking-widest">17 Apr 2004</span>
           <span
             class="w-2 h-2 rounded-full bg-white shadow-[0_0_10px_white]"
           ></span>
-          <span class="font-thin">2026</span>
+          <span class="font-thin text-base sm:text-xl md:text-2xl uppercase tracking-widest">17 Feb 2026</span>
         </div>
         <p
           class="max-w-xl text-slate-300 text-base sm:text-lg font-light leading-relaxed mt-4 tracking-wide backdrop-blur-sm p-4 rounded-xl border border-white/5"
         >
-          A constellation of memories, laughter, and love that will never fade.
+          ’n Konstellasie van herinneringe, lag en liefde wat nooit sal vervaag nie.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-6 sm:mt-10 w-full sm:w-auto px-4">
           <button
@@ -313,12 +338,12 @@
             <span class="material-symbols-outlined text-[18px]"
               >play_circle</span
             >
-            Watch Tribute
+            Kyk Huldeblyk
           </button>
           <button
             class="bg-transparent hover:bg-white/5 text-white border border-white/20 px-8 sm:px-10 py-4 rounded-full font-medium tracking-wider uppercase text-xs transition-all backdrop-blur-md"
           >
-            RSVP to Service
+            RSVP vir Diens
           </button>
         </div>
       </div>
@@ -346,7 +371,7 @@
           <h2
             class="font-serif text-4xl sm:text-5xl md:text-6xl text-white mb-6 md:mb-8 leading-tight text-center lg:text-left"
           >
-            Order of<br /><span class="text-primary italic">Service</span>
+            Orde van<br /><span class="text-primary italic">Diens</span>
           </h2>
           <div
             class="glass-panel p-6 sm:p-8 rounded-3xl relative overflow-hidden group max-w-lg mx-auto lg:max-w-none"
@@ -378,10 +403,10 @@
                 </div>
                 <div>
                   <h3 class="text-white font-serif text-xl mb-1">
-                    Friday, 27 February
+                    Donderdag, 26 Februarie
                   </h3>
                   <p class="text-slate-400 text-sm font-light">
-                    10:00 AM — 12:30 PM
+                    19:00
                   </p>
                 </div>
               </div>
@@ -389,7 +414,7 @@
                 class="block w-full text-center py-4 rounded-xl border border-primary/20 text-primary hover:bg-primary hover:text-background-dark transition-all duration-300 text-xs font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(179,229,252,0.05)]"
                 href="#"
               >
-                Get Directions
+                Kry Aanwysings
               </a>
             </div>
           </div>
@@ -405,142 +430,18 @@
               ></div>
               <div class="grid grid-cols-1 sm:grid-cols-[100px_1fr] gap-2 sm:gap-4 mb-2">
                 <span class="text-primary font-display font-light text-lg sm:text-xl"
-                  >10:00</span
+                  >19:00</span
                 >
                 <div>
                   <h3
                     class="text-2xl sm:text-3xl text-white font-serif mb-1 sm:mb-2 group-hover:text-primary transition-colors"
                   >
-                    Welcome
+                    Roudiens
                   </h3>
-                  <p class="text-slate-400 font-light text-sm sm:text-base">
-                    Led by
-                    <span
-                      class="text-slate-200 border-b border-primary/30 pb-0.5"
-                      >Pastor David Thompson</span
-                    >
+                  <p class="text-slate-500 text-xs sm:text-sm font-light max-w-lg">
+                    ’n Kerslig-aand van herinnering en gedeelde stories by Betsaida Kerk.
+                    Ons nooi vriende en familie uit om saam te kom en Emile se lewe te vier.
                   </p>
-                </div>
-              </div>
-            </div>
-            <div class="relative group">
-              <div
-                class="absolute -left-[37px] sm:-left-[55px] top-1 w-3 h-3 rounded-full bg-slate-700 border border-slate-500 group-hover:bg-primary group-hover:border-primary transition-all duration-300 z-10 shadow-[0_0_10px_rgba(0,0,0,0.5)]"
-              ></div>
-              <div class="grid grid-cols-1 sm:grid-cols-[100px_1fr] gap-2 sm:gap-4 mb-2">
-                <span
-                  class="text-slate-500 group-hover:text-primary font-display font-light text-lg sm:text-xl transition-colors"
-                  >10:15</span
-                >
-                <div>
-                  <h3
-                    class="text-2xl sm:text-3xl text-white font-serif mb-1 sm:mb-2 group-hover:text-primary transition-colors"
-                  >
-                    Musical Selection
-                  </h3>
-                  <div
-                    class="glass-panel inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10"
-                  >
-                    <span class="material-symbols-outlined text-primary text-sm"
-                      >music_note</span
-                    >
-                    <span class="text-xs sm:text-sm text-slate-300 italic"
-                      >"A Change Is Gonna Come"</span
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="relative group">
-              <div
-                class="absolute -left-[37px] sm:-left-[55px] top-1 w-3 h-3 rounded-full bg-slate-700 border border-slate-500 group-hover:bg-primary group-hover:border-primary transition-all duration-300 z-10 shadow-[0_0_10px_rgba(0,0,0,0.5)]"
-              ></div>
-              <div class="grid grid-cols-1 sm:grid-cols-[100px_1fr] gap-2 sm:gap-4 mb-2">
-                <span
-                  class="text-slate-500 group-hover:text-primary font-display font-light text-lg sm:text-xl transition-colors"
-                  >10:30</span
-                >
-                <div>
-                  <h3
-                    class="text-2xl sm:text-3xl text-white font-serif mb-1 sm:mb-2 group-hover:text-primary transition-colors"
-                  >
-                    Eulogy
-                  </h3>
-                  <p class="text-slate-400 font-light text-sm sm:text-base">
-                    Read by
-                    <span
-                      class="text-slate-200 border-b border-primary/30 pb-0.5"
-                      >JJ (Brother)</span
-                    >
-                  </p>
-                  <p class="text-slate-500 text-xs sm:text-sm mt-2 font-light">
-                    Reflections on growing up with Emile and his impact on our
-                    family.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="relative group">
-              <div
-                class="absolute -left-[37px] sm:-left-[55px] top-1 w-3 h-3 rounded-full bg-slate-700 border border-slate-500 group-hover:bg-primary group-hover:border-primary transition-all duration-300 z-10 shadow-[0_0_10px_rgba(0,0,0,0.5)]"
-              ></div>
-              <div class="grid grid-cols-1 sm:grid-cols-[100px_1fr] gap-2 sm:gap-4 mb-2">
-                <span
-                  class="text-slate-500 group-hover:text-primary font-display font-light text-lg sm:text-xl transition-colors"
-                  >11:00</span
-                >
-                <div>
-                  <h3
-                    class="text-2xl sm:text-3xl text-white font-serif mb-1 sm:mb-2 group-hover:text-primary transition-colors"
-                  >
-                    Open Mic Tributes
-                  </h3>
-                  <p class="text-slate-400 font-light text-sm sm:text-base">
-                    Friends &amp; Family are invited to share memories.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="relative group">
-              <div
-                class="absolute -left-[37px] sm:-left-[55px] top-1 w-3 h-3 rounded-full bg-slate-700 border-2 border-primary/50 group-hover:bg-primary group-hover:border-primary transition-all duration-300 z-10 shadow-[0_0_15px_rgba(179,229,252,0.4)]"
-              ></div>
-              <div class="grid grid-cols-1 sm:grid-cols-[100px_1fr] gap-2 sm:gap-4 mb-2">
-                <span
-                  class="text-primary font-display font-medium text-lg sm:text-xl transition-colors"
-                  >Feb 26</span
-                >
-                <div>
-                  <h3
-                    class="text-2xl sm:text-3xl text-white font-serif mb-1 sm:mb-2 group-hover:text-primary transition-colors"
-                  >
-                    Memorial Service
-                  </h3>
-                  <div class="flex items-center gap-3 text-slate-400 mb-2">
-                    <span class="material-symbols-outlined text-primary text-sm">schedule</span>
-                    <span class="text-sm">19:00</span>
-                  </div>
-                  <p class="text-slate-500 text-xs sm:text-sm font-light">
-                    A candlelight evening of remembrance and shared stories at Betsaida Church.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="relative group">
-              <div
-                class="absolute -left-[37px] sm:-left-[55px] top-1 w-3 h-3 rounded-full bg-slate-700 border border-slate-500 group-hover:bg-primary group-hover:border-primary transition-all duration-300 z-10 shadow-[0_0_10px_rgba(0,0,0,0.5)]"
-              ></div>
-              <div class="grid grid-cols-1 sm:grid-cols-[100px_1fr] gap-2 sm:gap-4 mb-2">
-                <span
-                  class="text-slate-500 group-hover:text-primary font-display font-light text-lg sm:text-xl transition-colors"
-                  >11:45</span
-                >
-                <div>
-                  <h3
-                    class="text-2xl sm:text-3xl text-white font-serif mb-1 sm:mb-2 group-hover:text-primary transition-colors"
-                  >
-                    Procession
-                  </h3>
                 </div>
               </div>
             </div>
@@ -582,7 +483,7 @@
           </div>
           <div class="order-1 md:order-2 space-y-6 sm:space-y-10">
             <h2 class="font-serif text-4xl sm:text-5xl md:text-7xl text-white text-center md:text-left">
-              Who Was <br /><span
+              Wie was <br /><span
                 class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-200"
                 >Emile?</span
               >
@@ -593,19 +494,10 @@
               <p
                 class="first-letter:text-4xl sm:first-letter:text-5xl first-letter:font-serif first-letter:text-primary first-letter:mr-3 first-letter:float-left"
               >
-                Emile wasn't just a presence in the room; he was the energy that
-                lit it up. Born in 2003, he approached the world with a
-                curiosity that was infectious. Whether he was tinkering with
-                vintage cameras or debating the best hip-hop albums of the 90s,
-                he did it with passion.
+                Emile, die jongste seun van Angelia Vaughan-Noemdo, is op 17 April 2004 in Malmesbury gebore. Hy was ’n stil, saggeaarde en vreugdevolle jongman wat met respek en vriendelikheid deur die lewe gegaan het.
               </p>
               <p>
-                He was a dreamer who acted. At 19, he started a community garden
-                initiative that now feeds over fifty families. He believed in
-                the power of small acts of kindness, often saying,
-                <span class="text-primary italic border-b border-primary/20"
-                  >"It costs nothing to be real."</span
-                >
+                Emile het ’n onstuitbare liefde vir die buitelewe gehad. Of dit nou rugby, swem of bloot tyd saam met sy vriende was, hy was op sy gelukkigste in die natuur. Bo alles was sy familie sy anker en hy het elke oomblik saam met hulle gekoester.
               </p>
             </div>
             <div class="grid grid-cols-2 gap-8 pt-8 border-t border-white/5">
@@ -616,7 +508,7 @@
                 >
                 <span
                   class="text-xs text-primary font-bold uppercase tracking-[0.2em]"
-                  >Years Young</span
+                  >Jaar Oud</span
                 >
               </div>
               <div class="text-center md:text-left">
@@ -626,13 +518,76 @@
                 >
                 <span
                   class="text-xs text-primary font-bold uppercase tracking-[0.2em]"
-                  >Lives Touched</span
+                  >Lewens Geraak</span
                 >
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      <!-- Passion for the Game (Rugby) Section -->
+      <section class="relative z-10 py-12">
+        <div class="glass-panel p-8 sm:p-12 rounded-[2.5rem] relative overflow-hidden group">
+          <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all duration-1000"></div>
+          <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl group-hover:bg-blue-600/20 transition-all duration-1000"></div>
+          
+          <div class="relative z-10 max-w-4xl mx-auto text-center space-y-8">
+            <span class="text-primary text-xs font-bold uppercase tracking-[0.4em]">Sy Laaste Wens</span>
+            <h2 class="font-serif text-4xl sm:text-5xl md:text-7xl text-white">’n Passie vir die <span class="italic text-primary">Spel</span></h2>
+            <div class="h-px w-24 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto"></div>
+            
+            <p class="text-slate-300 text-lg sm:text-2xl font-light italic leading-relaxed">
+              "Ek wil ook baie graag weer sportaktief raak. Ek is mos 'n talentvolle rugbyspeler en wil weer werk aan my potensiaal. Dalk kan ek vir Ceres in die Top 12 sit as ek opkom."
+            </p>
+            
+            <div class="pt-6">
+              <p class="text-slate-400 text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto">
+                Emile se hart het op die rugbyveld gelê. Sy grootste begeerte was om weer sy volle potensiaal as talentvolle rugbyspeler te bereik en sy merk in die sportwêreld te laat. Sy veggees en ambisie sal ons altyd bybly as ’n inspirasie om voluit te lewe.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Family Tributes Section -->
+      <section class="relative z-10 py-12">
+        <div class="text-center mb-16">
+          <span class="text-primary text-xs font-bold uppercase tracking-[0.4em] mb-4 block">Geskrifte van Liefde</span>
+          <h2 class="font-serif text-4xl sm:text-6xl text-white">Huldeblyke</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+          <!-- Brother's Tribute -->
+          <div class="glass-panel p-8 sm:p-10 rounded-3xl space-y-6 relative group border-t border-white/10">
+            <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+              <span class="material-symbols-outlined text-6xl text-primary">format_quote</span>
+            </div>
+            <h3 class="font-serif text-2xl sm:text-3xl text-white">Huldeblyk van sy <br><span class="text-primary italic">Broer</span></h3>
+            <div class="space-y-4 text-slate-300 text-base sm:text-lg font-light leading-relaxed">
+              <p>Emile was ’n seun met ’n stem wat van die begin af gehoor wou word. Hy was die perfekte balans tussen ’n spontane grapjas en ’n nederige, respekvolle jongman.</p>
+              <p>Hy het die seldsame gawe gehad om die mooi in enige situasie raak te sien en kon met gemak enigiemand se vriend word. Hoewel hy vinnig kon kwaad word, was sy hart so groot dat hy selfs vinniger kon vergewe.</p>
+              <p>Ons sal sy pragtige glimlag en sy aansteeklike lag nooit vergeet nie. Sy familie was sy alles en hy was die toonbeeld van ’n lekker uncle vir die kleintjies.</p>
+              <p class="text-primary/70 italic pt-4 font-serif">"Hy laat ’n leemte wat niemand ooit sal kan vul nie."</p>
+            </div>
+          </div>
+
+          <!-- Mother's Tribute -->
+          <div class="glass-panel p-8 sm:p-10 rounded-3xl space-y-6 relative group border-t border-white/10">
+            <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+              <span class="material-symbols-outlined text-6xl text-primary">favorite</span>
+            </div>
+            <h3 class="font-serif text-2xl sm:text-3xl text-white">Woorde van sy <br><span class="text-primary italic">Moeder</span></h3>
+            <div class="space-y-4 text-slate-300 text-base sm:text-lg font-light leading-relaxed">
+              <p>Hy sal altyd onthou word vir daardie kenmerkende wenkbroue wat hom die bynaam <span class="text-primary">Angry Bird</span> besorg het, maar dit was sy oop glimlag wat enigiemand se dag kon ophelder. Sy kalm bruin oë het hom onmiddellik in mense se harte laat kruip.</p>
+              <p>My seun, ek gaan ons gekeksery so mis. Jy het seker gemaak dat ek elke middag opgetel voel. Dankie vir elke koppie tee en elke mooi oomblik wat ons die laaste paar maande kon deel.</p>
+              <p>Ek is so dankbaar dat die Here jou vir my geleen het tot jy mondig geword het. As ek weer moes kies, sou jy elke keer my keuse wees.</p>
+              <p class="text-primary/70 italic pt-4 font-serif">"Mag jou siel in vrede rus, my seun. Ek mis jou vreeslik!"</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="relative z-10">
         <div
           class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6"
@@ -640,10 +595,10 @@
           <div>
             <span
               class="text-primary text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em] mb-2 block"
-              >Visual Memories</span
+              >Visuele Herinneringe</span
             >
             <h2 class="font-serif text-3xl sm:text-4xl md:text-6xl text-white">
-              Life in Pictures
+              Lewe in Foto's
             </h2>
           </div>
           <a
@@ -652,7 +607,7 @@
           >
             <span
               class="text-xs sm:text-sm uppercase tracking-widest group-hover:text-primary transition-colors"
-              >View Full Gallery</span
+              >Sien Volledige Galery</span
             >
             <span
               class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform"
@@ -661,13 +616,16 @@
           </a>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 sm:auto-rows-[250px]">
+          <!-- EV.png -->
           <div
-            class="sm:col-span-2 sm:row-span-2 rounded-3xl overflow-hidden relative group border border-white/10 shadow-2xl h-[250px] sm:h-auto"
+            class="sm:col-span-2 sm:row-span-2 rounded-3xl overflow-hidden relative group border border-white/10 shadow-2xl h-[300px] sm:h-auto"
           >
             <div
-              class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+              class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105 clickable-image"
+              onclick="openLightbox('public/EV.png')"
               style="
-                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBm2T6fxQ8QHugQkbQq8_whIfE5c7G4G9RfKQWlly7-pWkN0ikhxowcNJ464Cg7Bf9kESTsLGq2cV7q38o1PjfCFmNUT_A40cSE3yXgf1qk0U52-MFLmi2Kkt2mmeo4kaYMUpjXGhXvXAkrw7XG8NfR-dFOXmwuiARC2siOlF3xFkm9Ty7iHuL1bTZVeCdcTFL7fpqVsRPJnvmZn6e6bQmWt_3EoDln8aHvxY-NFPAUjNA9Ga1j3otJKzQ8voxZJrfyaMigOxoOZGCd&quot;);
+                background-image: url('public/EV.png');
+                background-position: center 15%;
               "
               loading="lazy"
               decoding="async"
@@ -677,45 +635,57 @@
             >
               <div>
                 <p class="text-primary text-[10px] sm:text-xs uppercase tracking-widest mb-1 sm:mb-2">
-                  Adventures
+                  Herinneringe
                 </p>
                 <p class="text-white font-serif text-xl sm:text-2xl">
-                  Summer Hiking Trip, 2023
+                  In Liefdevolle Herinnering
                 </p>
               </div>
             </div>
           </div>
+          
+          <!-- EV2.png -->
           <div
             class="rounded-3xl overflow-hidden relative group border border-white/10 hover:border-primary/50 transition-colors h-[250px]"
           >
             <div
-              class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+              class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 clickable-image"
+              onclick="openLightbox('public/EV2.png')"
               style="
-                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCLsAG7YYmgRFNgTTRsx_-2bD_P8HiSFU76io055nYLXqjJ8jmzbjTEpQNgz4kQPLtobY_JtgfyCMgYSlX0nAXW8TTBUf4xS6HoZwDQDyB1x2GG1hG4o0bLUhulJHBUJpKwV0b091GNgtSirkCnxd-dhW-haX_eVJWrsnAYjpE_wCEsMejH0GqeSH3OuzecUvQ6nfZQYKu-AuN9-hnABqH3eyas0JuTlF12j13vFvtDAPH1iF1Hv4Bnsgef6_FT7IrU_aq7bimPiMJy&quot;);
+                background-image: url('public/EV2.png');
+                background-position: center top;
               "
               loading="lazy"
               decoding="async"
             ></div>
           </div>
+
+          <!-- EV3.png -->
           <div
             class="rounded-3xl overflow-hidden relative group border border-white/10 hover:border-primary/50 transition-colors h-[250px]"
           >
             <div
-              class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+              class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 clickable-image"
+              onclick="openLightbox('public/EV3.png')"
               style="
-                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuD7rbRh9azmaEf_1-Rb9NBy_qtzs7sYLgqZL8MneZyK47PVvEu90Ewza2Aeu-uXGk8-T9DFcJaFfqjvTfIhwWzAsf5uGnPS7ldFyoGRMB0Wua9Kq_GPTgSpP9Ld7ZDRQOAHG0CFFbkuwUeL50mwpyyFTrSND2vb4YEIfU3naSJSN7s-ULn-1Xl3oDfMPReIbGrAN88bUmoeNSBoJP12QHGevTZgszIzpS6ESGIQR55sexy1KyBaiyNfgyqEMoZzf96tzI7aWtPppZ7i&quot;);
+                background-image: url('public/EV3.png');
+                background-position: center 25%;
               "
               loading="lazy"
               decoding="async"
             ></div>
           </div>
+
+          <!-- WhatsApp Image ... 18.51.33.jpeg -->
           <div
-            class="sm:col-span-2 sm:row-span-1 rounded-3xl overflow-hidden relative group border border-white/10 hover:border-primary/50 transition-colors h-[250px] sm:h-auto"
+            class="sm:col-span-1 sm:row-span-1 rounded-3xl overflow-hidden relative group border border-white/10 hover:border-primary/50 transition-colors h-[250px]"
           >
             <div
-              class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+              class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 clickable-image"
+              onclick="openLightbox('public/WhatsApp Image 2026-02-24 at 18.51.33.jpeg')"
               style="
-                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDryB4JNp89O6aPbCZXmu-fMrKrnADiRGvzQ_8AAWt5O9MmpeVussQOvvf_eWOkZQKluupiZw03p4BChRLkMayoqopKdiakeDZ0o7QMFiyRMZM8Q8e4KU5KnNjKUWHPVqILrGSQG0bgFCStnlablTxLiC5psQTO6LYVIycGbxvuU3ixQ0hof3Z7OBskNbhQlPSzkDMqiOTYQgKz1eCdczrG8ksvb9Igwlat82y_ubNUptuEiDYqRv-6Wv-on8p4UP31J6CKN2nEl3Iv&quot;);
+                background-image: url('public/WhatsApp Image 2026-02-24 at 18.51.33.jpeg');
+                background-position: center 20%;
               "
               loading="lazy"
               decoding="async"
@@ -724,397 +694,160 @@
               class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"
             ></div>
           </div>
+
+          <!-- WhatsApp Image ... 18.51.34.jpeg -->
           <div
             class="rounded-3xl overflow-hidden relative group border border-white/10 hover:border-primary/50 transition-colors h-[250px]"
           >
             <div
-              class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+              class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 clickable-image"
+              onclick="openLightbox('public/WhatsApp Image 2026-02-24 at 18.51.34.jpeg')"
               style="
-                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuC6BBk657TC3OkmDLEqg14YzDq59pCFQP3ZTjQ3HnsbH5c4ez7olXe9JeiaFysy54o_a9XXen2o8np2YL1Yp-3Wl-6mzHG0Vg_1ZWbr7k-LIFHBHH4pMTlXuUL6YOm6ZC7CODRw3U8IyjReDV_ITt4z3lhBdRb3lEEyZaESYrXSiOxHOSxUpZ2P44AylxFoo6S-qFUvxsUU91b7XNeb5p4r6i8LL81nBSSiquQE1u3c4Dq6HO-EAg32TApBSwsRVEF823iVYdque7fh&quot;);
+                background-image: url('public/WhatsApp Image 2026-02-24 at 18.51.34.jpeg');
+                background-position: center 15%;
               "
               loading="lazy"
               decoding="async"
             ></div>
           </div>
+
+          <!-- WhatsApp Image ... 18.51.36.jpeg -->
           <div
-            class="rounded-3xl overflow-hidden relative group glass-panel flex flex-col items-center justify-center border border-white/10 cursor-pointer hover:bg-white/5 transition-all h-[120px] sm:h-auto"
+            class="rounded-3xl overflow-hidden relative group border border-white/10 hover:border-primary/50 transition-colors h-[250px]"
           >
             <div
-              class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-primary/10 flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform"
-            >
-              <span class="material-symbols-outlined text-2xl sm:text-3xl text-primary"
-                >add_a_photo</span
-              >
-            </div>
-            <p
-              class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-slate-300"
-            >
-              Share Photo
-            </p>
+              class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 clickable-image"
+              onclick="openLightbox('public/WhatsApp Image 2026-02-24 at 18.51.36.jpeg')"
+              style="
+                background-image: url('public/WhatsApp Image 2026-02-24 at 18.51.36.jpeg');
+                background-position: center 20%;
+              "
+              loading="lazy"
+              decoding="async"
+            ></div>
           </div>
+
+          <!-- WhatsApp Image ... 18.51.37.jpeg -->
+          <div
+            class="rounded-3xl overflow-hidden relative group border border-white/10 hover:border-primary/50 transition-colors h-[250px]"
+          >
+            <div
+              class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 clickable-image"
+              onclick="openLightbox('public/WhatsApp Image 2026-02-24 at 18.51.37.jpeg')"
+              style="
+                background-image: url('public/WhatsApp Image 2026-02-24 at 18.51.37.jpeg');
+                background-position: center top;
+              "
+              loading="lazy"
+              decoding="async"
+            ></div>
+          </div>
+
+          <!-- WhatsApp Image ... 18.52.10.jpeg -->
+          <div
+            class="sm:col-span-1 sm:row-span-1 rounded-3xl overflow-hidden relative group border border-white/10 hover:border-primary/50 transition-colors h-[250px]"
+          >
+            <div
+              class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 clickable-image"
+              onclick="openLightbox('public/WhatsApp Image 2026-02-24 at 18.52.10.jpeg')"
+              style="
+                background-image: url('public/WhatsApp Image 2026-02-24 at 18.52.10.jpeg');
+                background-position: center 50%;
+              "
+              loading="lazy"
+              decoding="async"
+            ></div>
+          </div>
+
+
         </div>
       </section>
-      <section class="relative z-10 py-12">
-        <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16 px-4">
-          <span
-            class="material-symbols-outlined text-primary text-4xl sm:text-5xl mb-4 animate-float"
-            >headphones</span
-          >
-          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-white mb-4">
-            The Soundtrack
-          </h2>
-          <p class="text-slate-400 font-light text-base sm:text-lg">
-            Tracks that defined his journey, curated with love.
-          </p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          <div
-            class="glass-panel p-6 rounded-3xl flex items-center gap-6 group hover:bg-white/10 transition-all duration-300 relative overflow-hidden"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
-            ></div>
-            <div
-              class="relative w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0 shadow-lg group-hover:shadow-primary/20 transition-all"
-            >
-              <img
-                alt="Album Art"
-                class="w-full h-full object-cover animate-[spin_10s_linear_infinite] group-hover:animate-none"
-                loading="lazy"
-                decoding="async"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ-uka4qffbIsuqmbotG4LnWJXHz9_6wrmrIy6MzLrxSjna9HiYIGmOQsu6_TKH5YqS3fdfXhxMN_DdN9Ony2xXNtvx0QeiPuzEPaEBhFoJYL__SDhvwFVzpRE4Qyi_eweh0Et9USfv2GmFS0pGwgrJ7OiFJ8KA-gkSG6BFvmrYyYY1heBFCcYumerF60SKTrpdzrMhaXGP6pf4EvSLcoM1OHbwGNGehAKgPddkAWvvJQ0Li9RIBsgxo13IV4kLSD0kVVyK1tA9fGD"
-              />
-              <div
-                class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]"
-              >
-                <span class="material-symbols-outlined text-white text-3xl"
-                  >play_circle</span
-                >
-              </div>
-            </div>
-            <div class="flex-grow min-w-0 relative z-10">
-              <h4 class="text-white font-bold text-lg truncate mb-1">
-                Pursuit of Happiness
-              </h4>
-              <p
-                class="text-primary text-sm font-medium tracking-wide uppercase"
-              >
-                Kid Cudi
-              </p>
-              <div
-                class="mt-3 w-full bg-white/10 h-1 rounded-full overflow-hidden"
-              >
-                <div class="bg-primary h-full w-2/3 rounded-full relative">
-                  <div
-                    class="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow-[0_0_8px_white]"
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="glass-panel p-6 rounded-3xl flex items-center gap-6 group hover:bg-white/10 transition-all duration-300 relative overflow-hidden"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
-            ></div>
-            <div
-              class="relative w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0 shadow-lg group-hover:shadow-primary/20 transition-all"
-            >
-              <img
-                alt="Album Art"
-                class="w-full h-full object-cover animate-[spin_12s_linear_infinite] group-hover:animate-none"
-                loading="lazy"
-                decoding="async"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7eSlYXeKdgaE4otGo4iwSCE86I21Uo64R6-__8HCerc30acc9Q4rUOd09AhEEB072ZDl7t2pCewA41FXrlRctzPVysrPzhZCmMtxUK5A0C5bVuYuBhFJfDR6ZDV3S4SK5u68wmMsIRpQVmwbLl-dmSeS0g8wh7BR0vrsqKLsJFAqJdjJ7USSAkELd0ioRNjp3Ra7BKEzmOMPke6R7OEg0ptZK9aqqfI3iShEglglW7E7N5_FTpW1rUtlVk6fAAdbPTzLSinEwHt31"
-              />
-              <div
-                class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]"
-              >
-                <span class="material-symbols-outlined text-white text-3xl"
-                  >play_circle</span
-                >
-              </div>
-            </div>
-            <div class="flex-grow min-w-0 relative z-10">
-              <h4 class="text-white font-bold text-lg truncate mb-1">Nikes</h4>
-              <p
-                class="text-primary text-sm font-medium tracking-wide uppercase"
-              >
-                Frank Ocean
-              </p>
-              <div
-                class="mt-3 w-full bg-white/10 h-1 rounded-full overflow-hidden"
-              >
-                <div
-                  class="bg-slate-500 h-full w-0 group-hover:w-1/3 transition-all duration-1000 rounded-full"
-                ></div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="glass-panel p-6 rounded-3xl flex items-center gap-6 group hover:bg-white/10 transition-all duration-300 relative overflow-hidden"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
-            ></div>
-            <div
-              class="relative w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0 shadow-lg group-hover:shadow-primary/20 transition-all"
-            >
-              <img
-                alt="Album Art"
-                class="w-full h-full object-cover animate-[spin_15s_linear_infinite] group-hover:animate-none"
-                loading="lazy"
-                decoding="async"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcHd99X090tq85ibSybtTKL5cNyKRa1o-p-vB-ioBET3DCi7hj2Fd9Jso-2QP1CQ9Dd2BBnNxio5BuzI2cmSPL1yyxV7UnsdOHHlT1go9kerEqa4xwBD5eKcJhnOgEhMCFkbUAJRfgUkJkyKXbkB9naBDxJjz1U1d8LadIPtBYq0NdAbG2T7GbdsM0cblJ6hF4hURsgJxs5eR_EbU_DOVmciYx_thq5ylW218h69O1cIYhx_DAWNK5Zp1n3blmeCP8tfggj5DeTOYn"
-              />
-              <div
-                class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]"
-              >
-                <span class="material-symbols-outlined text-white text-3xl"
-                  >play_circle</span
-                >
-              </div>
-            </div>
-            <div class="flex-grow min-w-0 relative z-10">
-              <h4 class="text-white font-bold text-lg truncate mb-1">
-                Ultralight Beam
-              </h4>
-              <p
-                class="text-primary text-sm font-medium tracking-wide uppercase"
-              >
-                Kanye West
-              </p>
-              <div
-                class="mt-3 w-full bg-white/10 h-1 rounded-full overflow-hidden"
-              >
-                <div
-                  class="bg-slate-500 h-full w-0 group-hover:w-1/4 transition-all duration-1000 rounded-full"
-                ></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="glass-panel rounded-2xl p-2 overflow-hidden">
-          <iframe
-            allow="
-              autoplay;
-              clipboard-write;
-              encrypted-media;
-              fullscreen;
-              picture-in-picture;
-            "
-            allowfullscreen=""
-            frameborder="0"
-            height="80"
-            loading="lazy"
-            src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&amp;theme=0"
-            style="border-radius: 12px"
-            width="100%"
-          ></iframe>
-        </div>
-      </section>
-      <section class="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-12">
-        <div class="lg:col-span-1 space-y-8 lg:sticky lg:top-32 h-fit mb-12 lg:mb-0">
+
+      <!-- Gallery Section -->
+      <section id="gallery" class="relative z-10">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
           <div>
-            <h2 class="font-serif text-4xl md:text-5xl text-white mb-4">
-              Wall of Light
-            </h2>
-            <p class="text-slate-400 mb-6 font-light">
-              Each message lights a star in his galaxy. Share your story or
-              simply light a candle.
-            </p>
+            <span class="text-primary text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em] mb-2 block">Gedeelde Herinneringe</span>
+            <h2 class="font-serif text-3xl sm:text-4xl md:text-6xl text-white">Fotogalery</h2>
           </div>
-          <div class="glass-panel p-8 rounded-3xl relative overflow-hidden">
+        </div>
+        <div id="approved-images-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+          <div class="rounded-3xl overflow-hidden relative group border border-white/10 hover:border-primary/50 transition-colors h-[250px]">
             <div
-              class="absolute -top-10 -right-10 w-32 h-32 bg-primary/20 rounded-full blur-3xl"
+              class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 clickable-image"
+              onclick="openLightbox('public/emile_suit.jpeg')"
+              style="
+                background-image: url('public/emile_suit.jpeg');
+                background-position: center 20%;
+              "
+              loading="lazy"
+              decoding="async"
             ></div>
-            <form class="space-y-6 relative z-10">
-              <div class="space-y-2">
-                <label
-                  class="block text-xs font-bold uppercase tracking-widest text-slate-400"
-                  >Your Name</label
-                >
-                <input
-                  class="w-full bg-background-dark/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:ring-1 focus:ring-primary focus:border-primary placeholder-slate-600 transition-all outline-none"
-                  placeholder="Jane Doe"
-                  type="text"
-                />
+          </div>
+          <div class="rounded-3xl overflow-hidden relative group border border-white/10 hover:border-primary/50 transition-colors h-[250px]">
+            <div
+              class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 clickable-image"
+              onclick="openLightbox('public/emile_child.jpg')"
+              style="
+                background-image: url('public/emile_child.jpg');
+                background-position: center;
+              "
+              loading="lazy"
+              decoding="async"
+            ></div>
+          </div>
+          <!-- Approved images will be loaded here -->
+        </div>
+      </section>
+
+      <!-- Tribute Section -->
+      <section id="tribute" class="relative z-10 py-24">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <!-- Message Form -->
+          <div class="glass-panel p-8 rounded-3xl">
+            <h2 class="font-serif text-3xl text-white mb-6">Laat 'n Boodskap</h2>
+            <form id="message-form" class="space-y-6">
+              <div>
+                <label class="block text-slate-400 text-xs uppercase tracking-widest mb-2">Naam (Opsioneel)</label>
+                <input type="text" id="msg-name" placeholder="Anoniem" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-primary outline-none transition-colors">
               </div>
-              <div class="space-y-2">
-                <label
-                  class="block text-xs font-bold uppercase tracking-widest text-slate-400"
-                  >Your Memory</label
-                >
-                <textarea
-                  class="w-full bg-background-dark/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:ring-1 focus:ring-primary focus:border-primary placeholder-slate-600 transition-all outline-none resize-none"
-                  placeholder="I'll never forget..."
-                  rows="4"
-                ></textarea>
+              <div>
+                <label class="block text-slate-400 text-xs uppercase tracking-widest mb-2">Boodskap</label>
+                <textarea id="msg-content" required rows="4" placeholder="Skryf u boodskap hier..." class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-primary outline-none transition-colors"></textarea>
               </div>
-              <div class="flex flex-col gap-3 pt-2">
-                <button
-                  class="w-full bg-primary hover:bg-white hover:scale-[1.02] text-background-dark py-3 rounded-xl font-bold uppercase text-xs tracking-widest transition-all shadow-lg shadow-primary/20"
-                  type="submit"
-                >
-                  Post Memory
-                </button>
-                <button
-                  class="w-full border border-white/10 hover:bg-white/5 text-slate-300 py-3 rounded-xl font-bold uppercase text-xs tracking-widest transition-all flex items-center justify-center gap-2 group"
-                  type="button"
-                >
-                  <span
-                    class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform"
-                    >candle</span
-                  >
-                  Light a Candle Only
-                </button>
-              </div>
+              <button type="submit" class="w-full bg-primary hover:bg-white text-background-dark py-4 rounded-xl font-bold uppercase tracking-widest text-xs transition-all">Stuur Boodskap</button>
+              <p id="msg-status" class="text-xs text-center mt-2 hidden"></p>
             </form>
           </div>
-          <div
-            class="p-6 rounded-2xl bg-gradient-to-r from-blue-900/40 to-transparent border border-white/5 flex items-center gap-5"
-          >
-            <div
-              class="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center text-primary shadow-[0_0_20px_rgba(179,229,252,0.3)] animate-pulse-slow"
-            >
-              <span class="material-symbols-outlined text-2xl"
-                >local_fire_department</span
-              >
-            </div>
-            <div>
-              <span class="block text-3xl font-bold text-white font-display"
-                >842</span
-              >
-              <span
-                class="text-xs text-slate-400 font-bold uppercase tracking-widest"
-                >Candles Burning</span
-              >
-            </div>
+
+          <!-- Image Upload Form -->
+          <div class="glass-panel p-8 rounded-3xl">
+            <h2 class="font-serif text-3xl text-white mb-6">Deel 'n Foto</h2>
+            <form id="image-form" class="space-y-6">
+              <div>
+                <label class="block text-slate-400 text-xs uppercase tracking-widest mb-2">Wie laai dit op? (Opsioneel)</label>
+                <input type="text" id="img-name" placeholder="Anoniem" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-primary outline-none transition-colors">
+              </div>
+              <div class="relative">
+                <label class="block text-slate-400 text-xs uppercase tracking-widest mb-2">Kies Foto</label>
+                <div class="border-2 border-dashed border-white/10 rounded-xl p-8 text-center hover:border-primary/50 transition-colors cursor-pointer group" onclick="document.getElementById('img-file').click()">
+                  <span class="material-symbols-outlined text-4xl text-slate-500 group-hover:text-primary mb-2">add_a_photo</span>
+                  <p class="text-xs text-slate-500 group-hover:text-slate-300">Klik om 'n lêer te kies</p>
+                  <input type="file" id="img-file" accept="image/*" class="hidden" required>
+                </div>
+                <p id="file-name-display" class="text-xs text-primary mt-2 text-center"></p>
+              </div>
+              <button type="submit" class="w-full bg-primary hover:bg-white text-background-dark py-4 rounded-xl font-bold uppercase tracking-widest text-xs transition-all">Laai Foto Op</button>
+              <p id="img-status" class="text-xs text-center mt-2 hidden"></p>
+            </form>
           </div>
         </div>
-        <div class="lg:col-span-2">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-auto">
-            <div
-              class="glass-panel p-8 rounded-3xl hover:bg-white/5 hover:-translate-y-1 transition-all duration-300 group"
-            >
-              <div
-                class="flex items-center justify-between mb-6 border-b border-white/5 pb-4"
-              >
-                <div class="flex items-center gap-4">
-                  <div
-                    class="w-10 h-10 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center text-white font-serif border border-white/10"
-                  >
-                    S
-                  </div>
-                  <div>
-                    <h4 class="text-white font-bold text-sm">Sarah Jenkins</h4>
-                    <span
-                      class="text-[10px] text-slate-500 uppercase tracking-widest"
-                      >2 hours ago</span
-                    >
-                  </div>
-                </div>
-                <span
-                  class="material-symbols-outlined text-slate-600 group-hover:text-primary transition-colors"
-                  >candle</span
-                >
-              </div>
-              <p class="text-slate-300 text-sm leading-7 font-light">
-                "Emile was the first person to welcome me when I moved to the
-                city. He had this way of making everyone feel like they
-                belonged. The way he lit up talking about his garden was pure
-                magic."
-              </p>
-            </div>
-            <div
-              class="glass-panel p-8 rounded-3xl hover:bg-white/5 hover:-translate-y-1 transition-all duration-300 group border-primary/20 shadow-[0_0_20px_rgba(179,229,252,0.05)]"
-            >
-              <div
-                class="flex items-center justify-between mb-6 border-b border-white/5 pb-4"
-              >
-                <div class="flex items-center gap-4">
-                  <div
-                    class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-blue-400 text-background-dark flex items-center justify-center font-serif font-bold"
-                  >
-                    M
-                  </div>
-                  <div>
-                    <h4 class="text-white font-bold text-sm">Mike Ross</h4>
-                    <span
-                      class="text-[10px] text-slate-500 uppercase tracking-widest"
-                      >Yesterday</span
-                    >
-                  </div>
-                </div>
-                <span
-                  class="material-symbols-outlined text-primary shadow-[0_0_10px_rgba(179,229,252,0.8)] rounded-full"
-                  >candle</span
-                >
-              </div>
-              <p class="text-slate-300 text-sm leading-7 font-light">
-                "Rest easy, brother. That trip to Vancouver will always be one
-                of my favorite memories. You lived more in 21 years than most do
-                in a lifetime. Keep shining up there."
-              </p>
-            </div>
-            <div
-              class="glass-panel p-8 rounded-3xl hover:bg-white/5 hover:-translate-y-1 transition-all duration-300 group md:col-span-2 lg:col-span-1"
-            >
-              <div
-                class="flex items-center justify-between mb-6 border-b border-white/5 pb-4"
-              >
-                <div class="flex items-center gap-4">
-                  <div
-                    class="w-10 h-10 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center text-white font-serif border border-white/10"
-                  >
-                    A
-                  </div>
-                  <div>
-                    <h4 class="text-white font-bold text-sm">Auntie Lisa</h4>
-                    <span
-                      class="text-[10px] text-slate-500 uppercase tracking-widest"
-                      >2 days ago</span
-                    >
-                  </div>
-                </div>
-                <span
-                  class="material-symbols-outlined text-slate-600 group-hover:text-primary transition-colors"
-                  >candle</span
-                >
-              </div>
-              <p class="text-slate-300 text-sm leading-7 font-light">
-                "My sweet nephew. Your smile could light up the darkest room. We
-                love you forever."
-              </p>
-            </div>
-            <div
-              class="glass-panel p-8 rounded-3xl hover:bg-white/5 hover:-translate-y-1 transition-all duration-300 group md:col-span-2"
-            >
-              <div
-                class="flex items-center justify-between mb-6 border-b border-white/5 pb-4"
-              >
-                <div class="flex items-center gap-4">
-                  <div
-                    class="w-10 h-10 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center text-white font-serif border border-white/10"
-                  >
-                    D
-                  </div>
-                  <div>
-                    <h4 class="text-white font-bold text-sm">David Chen</h4>
-                    <span
-                      class="text-[10px] text-slate-500 uppercase tracking-widest"
-                      >3 days ago</span
-                    >
-                  </div>
-                </div>
-              </div>
-              <p class="text-slate-300 text-sm leading-7 font-light">
-                "Thank you for teaching me how to skate. You were patient when
-                you didn't have to be. A true legend. I'm going to finish that
-                deck we started painting."
-              </p>
-            </div>
+
+        <!-- Approved Messages -->
+        <div class="mt-24">
+          <h2 class="font-serif text-3xl text-white mb-12 text-center">Huldigings</h2>
+          <div id="approved-messages-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Approved messages will be loaded here -->
           </div>
         </div>
       </section>
@@ -1179,10 +912,10 @@
           mobileNav.classList.remove("hidden-menu");
           mobileNav.classList.add("visible-menu");
           document.body.style.overflow = "hidden";
-          // Animate bars to X
-          bars[0].style.transform = "translateY(7px) rotate(45deg)";
+          // Animate bars to Cross
+          bars[0].style.transform = "translateY(13px) rotate(90deg) scaleX(1.2)";
           bars[1].style.opacity = "0";
-          bars[2].style.transform = "translateY(-7px) rotate(-45deg)";
+          bars[2].style.transform = "translateY(-8px) rotate(0deg)";
         } else {
           closeMenu();
         }
@@ -1206,6 +939,171 @@
       });
 
       // Scroll behavior for desktop (and general)
+      // Supabase Integration
+      const SUPABASE_URL = "https://hoozucnurqmxklvfktjl.supabase.co";
+      const SUPABASE_KEY = "sb_publishable_B4dbhhiIVELzrm4CcwsXAA_DbLceHma";
+      
+      const sb_script = document.createElement('script');
+      sb_script.src = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+      sb_script.onload = () => {
+        const { createClient } = supabase;
+        const _supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+        
+        loadApprovedContent(_supabase);
+        
+        // Setup real-time listeners
+        _supabase
+          .channel('public:messages')
+          .on('postgres_changes', { event: '*', schema: 'public', table: 'messages' }, () => {
+            loadApprovedContent(_supabase);
+          })
+          .subscribe();
+
+        _supabase
+          .channel('public:images')
+          .on('postgres_changes', { event: '*', schema: 'public', table: 'images' }, () => {
+            loadApprovedContent(_supabase);
+          })
+          .subscribe();
+        
+        document.getElementById('message-form').addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const name = document.getElementById('msg-name').value || "Anoniem";
+          const content = document.getElementById('msg-content').value;
+          const status = document.getElementById('msg-status');
+          
+          status.textContent = "Stuur momenteel...";
+          status.className = "text-xs text-center mt-2 text-primary block";
+          status.classList.remove('hidden');
+          
+          const { error } = await _supabase.from('messages').insert([{ name, content }]);
+          
+          if (error) {
+            status.textContent = "Fout: " + error.message;
+            status.className = "text-xs text-center mt-2 text-red-400 block";
+          } else {
+            status.textContent = "Boodskap gestuur vir goedkeuring. Dankie!";
+            status.className = "text-xs text-center mt-2 text-green-400 block";
+            e.target.reset();
+          }
+        });
+
+        document.getElementById('img-file').addEventListener('change', (e) => {
+          const fileName = e.target.files[0]?.name || "";
+          document.getElementById('file-name-display').textContent = fileName;
+        });
+
+        document.getElementById('image-form').addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const file = document.getElementById('img-file').files[0];
+          const name = document.getElementById('img-name').value || "Anoniem";
+          const status = document.getElementById('img-status');
+          
+          if (!file) return;
+          
+          status.textContent = "Laai tans op...";
+          status.className = "text-xs text-center mt-2 text-primary block";
+          status.classList.remove('hidden');
+          
+          const fileExt = file.name.split('.').pop();
+          const fileName = `${Math.random()}.${fileExt}`;
+          const filePath = `${fileName}`;
+          
+          const { error: uploadError } = await _supabase.storage.from('uploads').upload(filePath, file);
+          
+          if (uploadError) {
+            status.textContent = "Upload Fout: " + uploadError.message;
+            status.className = "text-xs text-center mt-2 text-red-400 block";
+            return;
+          }
+          
+          const { error: dbError } = await _supabase.from('images').insert([{ name, url: filePath }]);
+          
+          if (dbError) {
+            status.textContent = "Databasis Fout: " + dbError.message;
+            status.className = "text-xs text-center mt-2 text-red-400 block";
+          } else {
+            status.textContent = "Foto opgelaai vir goedkeuring. Dankie!";
+            status.className = "text-xs text-center mt-2 text-green-400 block";
+            e.target.reset();
+            document.getElementById('file-name-display').textContent = "";
+          }
+        });
+      };
+      document.head.appendChild(sb_script);
+
+      async function loadApprovedContent(supabaseInstance) {
+        const { data: messages, error: msgError } = await supabaseInstance
+          .from('messages')
+          .select('*')
+          .eq('is_approved', true)
+          .order('created_at', { ascending: false });
+          
+        if (!msgError && messages) {
+          const container = document.getElementById('approved-messages-container');
+          container.innerHTML = messages.map(msg => `
+            <div class="glass-panel p-6 rounded-2xl border-l-4 border-primary/30">
+              <p class="text-slate-300 italic mb-4">"${msg.content}"</p>
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                  <span class="material-symbols-outlined text-sm text-primary">person</span>
+                </div>
+                <span class="text-xs font-bold text-white uppercase tracking-widest">${msg.name}</span>
+              </div>
+            </div>
+          `).join('');
+        }
+
+        const { data: images, error: imgError } = await supabaseInstance
+          .from('images')
+          .select('*')
+          .eq('is_approved', true)
+          .order('created_at', { ascending: false });
+          
+        if (!imgError && images) {
+          const grid = document.getElementById('approved-images-grid');
+          grid.innerHTML = images.map(img => {
+            const { data } = supabaseInstance.storage.from('uploads').getPublicUrl(img.url);
+            return `
+              <div class="rounded-3xl overflow-hidden relative group border border-white/10 hover:border-primary/50 transition-colors h-[250px] clickable-image" onclick="openLightbox('${data.publicUrl}')">
+                <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('${data.publicUrl}')"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                  <span class="text-[10px] font-bold text-white uppercase tracking-widest">${img.name}</span>
+                </div>
+              </div>
+            `;
+          }).join('');
+        }
+      }
+
+      // Lightbox Functions
+      window.openLightbox = function(url) {
+        const modal = document.getElementById('lightbox-modal');
+        const img = document.getElementById('lightbox-image');
+        if (modal && img) {
+          img.src = url;
+          modal.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      window.closeLightbox = function() {
+        const modal = document.getElementById('lightbox-modal');
+        if (modal) {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('lightbox-modal');
+        if (modal) {
+          modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeLightbox();
+          });
+        }
+      });
+
       window.addEventListener("scroll", () => {
         if (isMenuOpen) return;
         
@@ -1232,8 +1130,20 @@
 
       // Close menu on ESC
       document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && isMenuOpen) closeMenu();
+        if (e.key === "Escape") {
+          if (typeof isMenuOpen !== 'undefined' && isMenuOpen) closeMenu();
+          const modal = document.getElementById('lightbox-modal');
+          if (modal && modal.style.display === 'flex') closeLightbox();
+        }
       });
     </script>
+    
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal">
+      <img id="lightbox-image" src="" alt="Full size image">
+      <button onclick="closeLightbox()" class="absolute top-8 right-8 text-white hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-4xl">close</span>
+      </button>
+    </div>
   </body>
 </html>
