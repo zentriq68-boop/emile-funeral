@@ -223,7 +223,28 @@
       .clickable-image {
         cursor: pointer;
       }
-    </style>
+
+      /* Video Modal Styles */
+      #video-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        background: rgba(2, 6, 23, 0.95);
+        backdrop-filter: blur(12px);
+        align-items: center;
+        justify-content: center;
+      }
+      #video-player {
+        max-width: 90%;
+        max-height: 80vh;
+        width: 100%;
+        border-radius: 1rem;
+        box-shadow: 0 0 50px rgba(179, 229, 252, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: #000;
+        outline: none;
+      }
     </style>
   </head>
   <body
@@ -331,8 +352,9 @@
         >
           ’n Konstellasie van herinneringe, lag en liefde wat nooit sal vervaag nie.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-6 sm:mt-10 w-full sm:w-auto px-4">
+        <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-6 w-full sm:w-auto px-4 justify-center">
           <button
+            onclick="openVideoModal()"
             class="bg-primary hover:bg-white text-background-dark px-8 sm:px-10 py-4 rounded-full font-bold tracking-wider uppercase text-xs transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(179,229,252,0.3)] flex items-center justify-center gap-2"
           >
             <span class="material-symbols-outlined text-[18px]"
@@ -340,13 +362,9 @@
             >
             Kyk Huldeblyk
           </button>
-          <button
-            class="bg-transparent hover:bg-white/5 text-white border border-white/20 px-8 sm:px-10 py-4 rounded-full font-medium tracking-wider uppercase text-xs transition-all backdrop-blur-md"
-          >
-            RSVP vir Diens
-          </button>
         </div>
       </div>
+
       <div
         class="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 animate-bounce text-primary/50"
       >
@@ -1076,6 +1094,28 @@
         }
       }
 
+      // Video Modal Functions
+      window.openVideoModal = function() {
+        const modal = document.getElementById('video-modal');
+        const video = document.getElementById('video-player');
+        if (modal && video) {
+          modal.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+          video.play();
+        }
+      }
+
+      window.closeVideoModal = function() {
+        const modal = document.getElementById('video-modal');
+        const video = document.getElementById('video-player');
+        if (modal && video) {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+          video.pause();
+          video.currentTime = 0;
+        }
+      }
+
       // Lightbox Functions
       window.openLightbox = function(url) {
         const modal = document.getElementById('lightbox-modal');
@@ -1100,6 +1140,13 @@
         if (modal) {
           modal.addEventListener('click', (e) => {
             if (e.target === modal) closeLightbox();
+          });
+        }
+
+        const videoModal = document.getElementById('video-modal');
+        if (videoModal) {
+          videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) closeVideoModal();
           });
         }
       });
@@ -1134,10 +1181,27 @@
           if (typeof isMenuOpen !== 'undefined' && isMenuOpen) closeMenu();
           const modal = document.getElementById('lightbox-modal');
           if (modal && modal.style.display === 'flex') closeLightbox();
+
+          const videoModal = document.getElementById('video-modal');
+          if (videoModal && videoModal.style.display === 'flex') closeVideoModal();
         }
       });
     </script>
     
+    <!-- Lightbox Modal -->
+    <!-- Video Modal -->
+    <div id="video-modal">
+      <div class="relative w-full max-w-5xl mx-auto flex items-center justify-center">
+        <video id="video-player" controls preload="metadata">
+          <source src="public/tribute_video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <button onclick="closeVideoModal()" class="absolute top-8 right-8 text-white hover:text-primary transition-colors z-10">
+        <span class="material-symbols-outlined text-4xl">close</span>
+      </button>
+    </div>
+
     <!-- Lightbox Modal -->
     <div id="lightbox-modal">
       <img id="lightbox-image" src="" alt="Full size image">
